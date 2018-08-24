@@ -12,15 +12,19 @@ def comment_get(id, nickname):
     print("开始爬取")
     base_url = "http://music.163.com/api/v1/resource/comments/R_SO_4_"
     offset = 0
+    # print((requests.get(url=base_url + id,
+    #                                 headers={
+    #                                     "User-Agent": "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3493.3 Safari/537.36"}
+    #                                 ).text))
     total = json.loads(requests.get(url=base_url + id,
                                     headers={
-                                        "User-Agent": "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:61.0) Gecko/20100101 Firefox/61.0"}
+                                        "User-Agent": "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3493.3 Safari/537.36"}
                                     ).text)['total']
     with open(str(id) + '的评论.txt', 'a', encoding='utf-8') as file:
         while total + 100 > offset:
             response = requests.get(url=base_url + id + "?limit=100&offset=" + str(offset),
                                     headers={
-                                        "User-Agent": "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:61.0) Gecko/20100101 Firefox/61.0"}
+                                        "User-Agent": "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3493.3 Safari/537.36"}
                                     )
             comment_json = json.loads(response.text)
             for each in comment_json["comments"]:

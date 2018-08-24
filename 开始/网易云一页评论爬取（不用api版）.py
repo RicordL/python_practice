@@ -1,3 +1,4 @@
+#废了，没有正确的data
 import requests
 import json
 
@@ -5,18 +6,19 @@ import json
 def get_url(url):
     headers = {
         "User-Agent": "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3493.3 Safari/537.36",
-        "Referer": "https: // music.163.com / song?id = 1297492096"}
+        "Referer": "https: // music.163.com / song?id = 513360721"}
     data = {
-        "params": "/ikCqD8GzvUt0c2GxliTUKlHWgGnUwsJcWBIcg4noqCXnEXjqaE3nHN39DGclk1MlNKSBFakLC2FpGyIlGH4QsH0+VhxgcD4zdIdsQXr1JiuafhA79XWcOFPPZEJDt2SJrBSlor4sjN4wDK+XqNPrG1dn7x9cXFyTYyCvtTRuKT1uP8e/JdR9D+huA3pA6Af",
-        "encSecKey": "7456c7d8dac8c575ce18cc7a631d0be6cd6303538efeefe2a8e5a0b4e7762ca67212e334541f89a4f6e7dd2dd8909da56e077c397a9de994ad886a11debaf6513289e350e1ed7047d55c7e544046b94091b3fe60a9bae76a5b7ce67fa0cddcc22fc5ae9fd87333d290b80b953fab463f5b3c5dd81b72d3d112462214e48074d1"}
+        "params": "7Nc6CR0/Jq1kCZ/QGvleW9YSJTFmnIDveB9Ukii3OXHz0qH9BAQIjtMaUkzQ/J8hUmGO5YFUjwaXrzFc4WwQittZgteYHCRoMiPPoJD9j3U4jxlZmvFUyrGDRqxuV35O+0fz4HK+H8XOqsrA4RAw7fAsC3lkmABeHl1ALPEGIikXF6kYbFVJCFzYujPMt43U",
+        "encSecKey": "cadf5642760f3d2bbb93c35eedeaafad91e509e508f800b17c34cae0af1d0e5c5fedd181c70fb496537853ef8c9273d2d271a4a2d3ea3a47e8d80d7dc9bd5399966a89bc35ce165557bac5bd57fee94df17c678ec16dee07965f464272db62979199c80dcbf4097ef9c5146256c3a3fc1a7d25f2a2018f0897d5f1deff212290"}
     response = requests.post(url, headers=headers, data=data)
     return response
 
 
 def main():
     # url=input("请输入URL:")
-    url = "https://music.163.com/weapi/v1/resource/comments/R_SO_4_1297492096?csrf_token="
+    url = "https://music.163.com/weapi/v1/resource/comments/R_SO_4_513360721?csrf_token="
     html = get_url(url)
+    print(html)
     comment_json=json.loads(html.text)
     # print(html.text)
     # print(comment_json)
